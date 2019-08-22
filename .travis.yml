@@ -225,5 +225,6 @@ before_script:
     - echo $REDIS_VERSION
     - redis-cli SHUTDOWN NOSAVE
 script: mvn -Dtest=$REDISSON_TEST -Dsurefire.rerunFailingTestsCount=5 -DargLine="-Xmx2g -DredisBinary=$REDIS_BIN/redis-server -DtravisEnv=true -XX:SoftRefLRUPolicyMSPerMB=0" -Punit-test clean test -e -X
+
 after_success:
   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
